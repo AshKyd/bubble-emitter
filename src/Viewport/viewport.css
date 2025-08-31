@@ -3,4 +3,15 @@
   position: relative;
   overflow: hidden;
   container-type: size;
+  background: linear-gradient(
+    to bottom right,
+    black 0px,
+    purple 100px,
+    black 200px,
+    blue 300px,
+    black 400px,
+    purple 500px,
+    black 600px
+  );
+  background-size: 420px 420px;
 }
