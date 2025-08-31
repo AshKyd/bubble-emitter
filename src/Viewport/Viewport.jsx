@@ -25,8 +25,7 @@ function Viewport({ width = "100vw", height = "100dvh", count = 20 }) {
         <Bubble
           key={index}
           position={{ x: left, y: 0 }}
-          size={Math.round(Math.random() * 100 + 50)}
-          duration={(3 + Math.random() * 6).toFixed(2) + "s"}
+          size={Math.round(Math.random() * 125 + 25)}
           delay={(Math.random() * 5).toFixed(2) + "s"}
         />
       ))}

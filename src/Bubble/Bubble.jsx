@@ -1,9 +1,11 @@
 import "./bubble.css";
 
-function Bubble({ size, position, duration = "4s", delay = "0s" }) {
+function Bubble({ size = 100, position, delay = "0s" }) {
+  // Larger bubbles (higher size) go quicker, smaller bubbles go slower
+  const newDuration = `${4 * (150 / size)}s`;
   const bubbleStyle = {
     "--diameter": `${size}px`,
-    "--duration": duration,
+    "--duration": newDuration,
     "--delay": delay,
     position: "absolute",
     left: `${position.x}px`,
