@@ -1,12 +1,10 @@
-import "./App.css";
-import Viewport from "./Viewport/Viewport";
+import "./app.css";
+import Viewport from "./Viewport/Viewport.jsx";
 
-function App() {
+export function App() {
   return (
-    <div class="app">
+    <>
       <Viewport width="100vw" height="100dvh" count={30} />
-    </div>
+    </>
   );
 }
-
-export default App;

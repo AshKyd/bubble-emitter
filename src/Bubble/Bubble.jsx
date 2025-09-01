@@ -1,6 +1,8 @@
+import { useState } from "preact/hooks";
 import "./bubble.css";
 
-function Bubble({ size = 100, position, delay = "0s" }) {
+function Bubble({ size = 100, position, delay = "0s", onPop }) {
+  const [isPopped, setIsPopped] = useState(false);
   // Larger bubbles (higher size) go quicker, smaller bubbles go slower
   const newDuration = `${4 * (150 / size)}s`;
   const bubbleStyle = {
@@ -12,9 +14,31 @@ function Bubble({ size = 100, position, delay = "0s" }) {
     top: `${0}px`,
   };
 
+  const unPop = isPopped
+    ? ({ target }) => {
+        if (target.classList.contains("bubble__float")) {
+          setIsPopped(false);
+        }
+      }
+    : undefined;
+
   return (
-    <div className="bubble__float" style={bubbleStyle}>
-      <div className="bubble"></div>
+    <div
+      className="bubble__float"
+      style={bubbleStyle}
+      onAnimationIteration={unPop}
+    >
+      <div
+        className={`bubble__popper bubble__popper--${
+          isPopped ? "popped" : "active"
+        }`}
+        onClick={() => {
+          setIsPopped(true);
+          onPop();
+        }}
+      >
+        <div className="bubble"></div>
+      </div>
     </div>
   );
 }

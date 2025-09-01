@@ -1,7 +1,10 @@
 import "./viewport.css";
 import Bubble from "../Bubble/Bubble";
+import popSrc from "./pop-91931.mp3";
+import { useRef } from "preact/hooks";
 
 function Viewport({ width = "100vw", height = "100dvh", count = 20 }) {
+  const audioRef = useRef(document.createElement("audio"));
   // Generate random positions for bubbles
   const positions = Array.from({ length: count }).map(
     () =>
@@ -26,9 +29,13 @@ function Viewport({ width = "100vw", height = "100dvh", count = 20 }) {
           key={index}
           position={{ x: left, y: 0 }}
           size={Math.round(Math.random() * 125 + 25)}
-          delay={(Math.random() * 5).toFixed(2) + "s"}
+          delay={0 - (Math.random() * 5).toFixed(2) + "s"}
+          onPop={() => {
+            audioRef.current.play();
+          }}
         />
       ))}
+      <audio src={popSrc} paused ref={audioRef} />
     </div>
   );
 }
