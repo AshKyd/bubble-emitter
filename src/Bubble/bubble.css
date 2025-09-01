@@ -20,6 +20,11 @@
 .bubble__float {
   animation: float var(--duration) infinite ease-in;
   animation-delay: var(--delay);
+  width: fit-content;
+}
+.bubble__popper {
+  cursor: pointer;
+  width: fit-content;
 }
 .bubble__popper--popped {
   animation: pop 0.2s ease-in;
